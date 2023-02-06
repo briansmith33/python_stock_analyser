@@ -1,16 +1,8 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'StockGUI.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.2
-#
-# WARNING! All changes made in this file will be lost!
-
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtCore import QPoint
-
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtCore import QPoint, QSize, Qt
+from PyQt5.QtGui import QCursor
+import qtawesome as qta
 
 def closeButton():
     sys.exit()
@@ -109,8 +101,12 @@ class Ui_MainWindow(QMainWindow):
         self.menubar.setGeometry(QtCore.QRect(0, 0, 868, 21))
         self.menubar.setObjectName("menubar")
         self.menubar.setStyleSheet("color: #FFF; border-bottom: 2px solid #333; padding: 5px; font-size: 12px;")
-        self.close_btn = QtWidgets.QPushButton("X", self.menubar)
-        self.close_btn.setStyleSheet("background: rgb(230, 70, 41); width: 10px; height: 10px;")
+
+        self.close_btn = QtWidgets.QPushButton(self.menubar)
+        self.close_btn.setIcon(qta.icon('fa5s.times', color="#55D6BE"))
+        self.close_btn.setIconSize(QSize(20, 20))
+        self.close_btn.setCursor(QCursor(Qt.CursorShape.PointingHandCursor))
+
         self.close_btn.clicked.connect(closeButton)
         self.menubar.setCornerWidget(self.close_btn, QtCore.Qt.TopRightCorner)
         self.menuFile = QtWidgets.QMenu(self.menubar)

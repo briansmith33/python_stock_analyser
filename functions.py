@@ -69,7 +69,7 @@ class Trend:
     could also be making a trend change or is too volatile for a clear direction to 
     be present.
     '''
-
+    @staticmethod
     def ADX(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
 
@@ -178,6 +178,7 @@ class Trend:
     price reversed from.
     '''
 
+    @staticmethod
     def Comm_CI(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         i = 0
@@ -236,6 +237,7 @@ class Trend:
     *The indicator is typically set to look back over 20 to 30 periods.
     '''
 
+    @staticmethod
     def DPO(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock), index_col='Date')
         n = 50
@@ -281,6 +283,7 @@ class Trend:
     price is strengthening or weakening.
     '''
 
+    @staticmethod
     def MACD(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock), index_col='Date')
         df['9ma'] = df['Adj Close'].rolling(window=9, min_periods=0).mean()
@@ -335,6 +338,7 @@ class Trend:
     patterns to help in their decision-making.
     '''
 
+    @staticmethod
     def KST_Osc(stock):
         AVG1 = 10
         AVG2 = 10
@@ -440,6 +444,7 @@ class Trend:
     according to the historical volatility of the particular stock they are studying.
     '''
 
+    @staticmethod
     def MI(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         df['Diff'] = df['High'] - df['Low']
@@ -497,6 +502,7 @@ class Trend:
     being considered by the indicator.
     '''
 
+    @staticmethod
     def Trix(stock):
         n = 10
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock), index_col='Date')
@@ -551,6 +557,7 @@ class Trend:
     an example with lines that indicate changing trend signals on a candlestick chart.
     '''
 
+    @staticmethod
     def VI(stock):
         n = 21
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock), index_col='Date')
@@ -624,6 +631,7 @@ class Momentum:
     start rising.
     '''
 
+    @staticmethod
     def MFI(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock), index_col='Date')
         high = df['High']
@@ -694,6 +702,7 @@ class Momentum:
     when the indicator is below 30%.
     '''
 
+    @staticmethod
     def RSI(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock), index_col='Date')
         close = df['Adj Close']
@@ -757,6 +766,7 @@ class Momentum:
     *Stochastic oscillators are sensitive to momentum rather than absolute price.
     '''
 
+    @staticmethod
     def Stoch_Osc(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         i = len(df) - 1
@@ -829,6 +839,7 @@ class Momentum:
     *Overbought and oversold levels will vary by the asset being traded.
     '''
 
+    @staticmethod
     def TSI(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         i = len(df) - 1
@@ -892,6 +903,7 @@ class Momentum:
     high is above 70, and the oscillator then falls below the divergence low.
     '''
 
+    @staticmethod
     def Ult_Osc(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         thl_df = pd.DataFrame(columns=['BP', 'TH', 'TL'])
@@ -999,6 +1011,7 @@ class Momentum:
     move out of overbought or oversold territory.
     '''
 
+    @staticmethod
     def R(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         n = 10
@@ -1057,6 +1070,7 @@ class Volume:
     and a potential decline in price.
     '''
 
+    @staticmethod
     def AccDistIndex(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         high = df['High']
@@ -1113,6 +1127,7 @@ class Volume:
     more heavily influenced by both smart money and noise traders.
     '''
 
+    @staticmethod
     def VolI(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         main_df = pd.DataFrame(columns=['+VI', '-VI'])
@@ -1176,6 +1191,7 @@ class Volume:
     of price charts. 
     '''
 
+    @staticmethod
     def OBV(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         OBV = 0
@@ -1225,6 +1241,7 @@ class Volume:
     VPT indicator included.
     '''
 
+    @staticmethod
     def VPT(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         main_df = pd.DataFrame(columns=['VPT'])
@@ -1275,6 +1292,7 @@ class Volatility:
     been applied to all types of securities.
     '''
 
+    @staticmethod
     def ATR(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         TR_df = pd.DataFrame(columns=['TR'])
@@ -1336,6 +1354,7 @@ class Volatility:
     happens, the upper band is viewed as resistance and the lower band is support.
     '''
 
+    @staticmethod
     def KC(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         high = df['High']
@@ -1381,6 +1400,7 @@ class Volatility:
     the investor's favor—such as above average returns.
     '''
 
+    @staticmethod
     def Std_Dev(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
         STD = df['Adj Close'].rolling(window=50).std()
@@ -1436,6 +1456,7 @@ class Breadth:
     a strong reversal from downtrend to uptrend is underway on the stock exchange.
     '''
 
+    @staticmethod
     def McClellan_Osc(stock):
         df = pd.read_csv('stock_dfs/{}.csv'.format(stock), index_col='Date')
 
@@ -1461,6 +1482,7 @@ class Breadth:
         return mcclellan
 
     # Advance/Decline Ratio
+    @staticmethod
     def ad_ratio(stock):
         advance = 0
         decline = 0
@@ -1481,6 +1503,7 @@ class Breadth:
         return ad_ratio.tail(1), nineteen_EMA.tail(1), thirtynine_EMA.tail(1)
 
     # Advance/Decline Volume
+    @staticmethod
     def ad_volume(stock):
         advance = 0
         decline = 0
@@ -1500,6 +1523,7 @@ class Breadth:
 
 
 class Sentiment:
+    @staticmethod
     def google_sentiment(stock):
         subjectivity = 0
         sentiment = 0
@@ -1518,6 +1542,7 @@ class Sentiment:
         sentiment = SUM / len(headline_results)
         return sentiment
 
+    @staticmethod
     def yahoo_sentiment(stock):
         subjectivity = 0
         sentiment = 0
@@ -1537,6 +1562,7 @@ class Sentiment:
         sentiment = SUM / len(headline_results)
         return sentiment
 
+    @staticmethod
     def bing_sentiment(stock):
         subjectivity = 0
         sentiment = 0
@@ -1555,6 +1581,7 @@ class Sentiment:
         sentiment = SUM / len(headline_results)
         return sentiment
 
+    @staticmethod
     def reuters_sentiment(stock):
         subjectivity = 0
         sentiment = 0
@@ -1573,6 +1600,7 @@ class Sentiment:
         sentiment = SUM / len(headline_results)
         return sentiment
 
+    @staticmethod
     def forbes_sentiment(stock):
         subjectivity = 0
         sentiment = 0
@@ -1591,6 +1619,7 @@ class Sentiment:
         sentiment = SUM / len(headline_results)
         return sentiment
 
+    @staticmethod
     def BI_sentiment(stock):
         subjectivity = 0
         sentiment = 0
@@ -1859,14 +1888,6 @@ def portfolio(stock):
     return loss_gain
 
 
-'''
-SUM = 0
-for stock in all_symbols:
-    SUM += portfolio(stock)
-print(SUM)
-'''
-
-
 def buy(Qty, stock):
     date = dt.datetime.now()
     date = date.strftime('%Y-%m-%d')
@@ -2032,164 +2053,7 @@ def score_switch(score):
     return switcher.get(score)
 
 
-def symbol_switch(stock):
-    date = dt.datetime.now()
-    month = date.month
-    year = date.year
-    if stock == 'TIF':
-        buyMonth = 9
-        sellMonth = 4
-
-    elif stock == 'GOOG':
-        buyMonth = 6
-        sellMonth = 4
-
-    elif stock == 'EXPE':
-        first = [1, 2, 3, 4, 5]
-        second = [6, 7, 8, 9, 10, 11, 12]
-        if month in first:
-            buyMonth = 5
-            sellMonth = 4
-        elif month in second:
-            buyMonth = 12
-            sellMonth = 10
-
-    elif stock == 'NFLX':
-        buyMonth = 12
-        sellMonth = 6
-
-    elif stock == 'BABA':
-        if year % 2 == 0:
-            buyMonth = 12
-            sellMonth = 6
-
-        else:
-            buyMonth = 0
-            sellMonth = 0
-
-    elif stock == 'ZG':
-        first = [1, 2, 3, 4, 11, 12]
-        second = [5, 6, 7, 8, 9, 10]
-        if month in first:
-            buyMonth = 4
-            sellMonth = 1
-        elif month in second:
-            buyMonth = 10
-            sellMonth = 7
-
-    return buyMonth, sellMonth
-
-
-def daily_calculations(stock):
-    file = Path('Calculations/{}.csv'.format(stock))
-    if file.is_file():
-        pass
-    else:
-        try:
-            adx = Trend.ADX(stock)
-            pos_DI = adx[1]
-            neg_DI = adx[2]
-            adx = adx[3]
-
-            cci = Trend.Comm_CI(stock)
-            cci = pd.DataFrame(cci[2][1:].values)[0]
-
-            dpo = Trend.DPO(stock)
-            dpo = pd.DataFrame(dpo[3][1:].values)[0]
-
-            macd = Trend.MACD(stock)
-            macd1 = pd.DataFrame(macd[0][1:].values)[0]
-            macd2 = pd.DataFrame(macd[1][1:].values)[0]
-            macd3 = pd.DataFrame(macd[2][1:].values)[0]
-
-            mi = Trend.MI(stock)
-            mi = pd.DataFrame(mi[2][1:].values)[0]
-
-            trix = Trend.Trix(stock)
-            trix = trix[2]
-
-            vi = Trend.VI(stock)
-            VMup = vi[4]
-            VMdown = vi[5]
-
-            mfi = Momentum.MFI(stock)
-            mfi = pd.DataFrame(mfi[1][1:].values)[0]
-
-            rsi = Momentum.RSI(stock)
-            rsi = rsi[1]
-
-            tsi = Momentum.TSI(stock)
-            tsi = tsi[2]
-
-            adi = Volume.AccDistIndex(stock)
-            adi = adi[2]
-
-            voli = Volume.VolI(stock)
-            pos_vi = voli[2]
-            neg_vi = voli[3]
-
-            obv = Volume.OBV(stock)
-            obv = obv[2]
-
-            vpt = Volume.VPT(stock)
-            vpt = vpt[2]
-
-            atr = Volatility.ATR(stock)
-            atr = atr[2]
-
-            kc = Volatility.KC(stock)
-            kc = pd.DataFrame(kc[1][1:].values)[0]
-
-            df = pd.read_csv('stock_dfs/{}.csv'.format(stock))
-            high_val = pd.DataFrame(df['High'][1:].values)[0]
-            low_val = pd.DataFrame(df['Low'][1:].values)[0]
-            open_val = pd.DataFrame(df['Open'][1:].values)[0]
-            close_val = pd.DataFrame(df['Adj Close'][1:].values)[0]
-            volume_val = pd.DataFrame(df['Volume'][1:].values)[0]
-
-            main_df = pd.DataFrame({
-                "High": high_val,
-                "Low": low_val,
-                "Open": open_val,
-                "Close": close_val,
-                "Volume": volume_val,
-                "+DI": pos_DI[0],
-                "-DI": neg_DI[0],
-                "ADX": adx[0],
-                "CCI": cci[0],
-                "DPO": dpo[0],
-                "MACD1": macd1[0],
-                "MACD2": macd2[0],
-                "MACD3": macd3[0],
-                "MI": mi[0],
-                "Trix": trix[0],
-                "VM+": VMup[0],
-                "VM-": VMdown[0],
-                "MFI": mfi[0],
-                "RSI": rsi[0],
-                "TSI": tsi[0],
-                "ADI": adi[0],
-                "+VI": pos_vi[0],
-                "-VI": neg_vi[0],
-                "OBV": obv[0],
-                "VPT": vpt[0],
-                "ATR": atr[0],
-                "KC": kc[0]
-            })
-            # main_df = main_df.tail(2)
-            main_df.to_csv('Calculations/{}.csv'.format(stock))
-
-        except:
-            pass
-
-
-with open("sp500tickers.pickle", "rb") as f:
-    stocks = pickle.load(f)
-    for stock in stocks:
-        daily_calculations(stock)
-
-
-def LinearRegression(stock):
+def linear_regression(stock):
     df = pd.read_csv('Calculations/{}.csv'.format(stock))
     df = df[1:].replace([np.inf, -np.inf], np.nan)
     df.fillna(0, inplace=True)
@@ -2255,206 +2119,3 @@ def LinearRegression(stock):
     # print(action)
     # print("Buy:" + str(Buy) + " Sell:" + str(Sell) + " Hold:" + str(Hold))
     return accuracy, action
-
-
-'''
-for stock in stocks:
-    print(stock)
-
-    df = pd.read_csv('watch_dfs/{}.csv'.format(stock))
-
-    main_df = pd.DataFrame()
-
-    main_df['Date'] = df['Date'][32:]
-
-    main_df['High'] = df['High'][32:]
-
-    main_df['Low'] = df['Low'][32:]
-
-    main_df['Open'] = df['Open'][32:]
-
-    main_df['Close'] = df['Close'][32:]
-
-    main_df['Volume'] = df['Volume'][32:]
-
-    main_df['Adj Close'] = df['Adj Close'][32:]
-
-    adx_list = ADX("watch_dfs", stock)
-    main_df['ADX'] = adx_list[0]
-    main_df['+DI'] = adx_list[1]
-    main_df['-DI'] = adx_list[2]
-
-    comm = Comm_CI("watch_dfs", stock)
-    main_df['Comm CI'] = comm[0]
-    main_df['Typical Price'] = comm[1]
-
-    main_df['DPO'] = DPO("watch_dfs", stock)
-
-    macd = MACD("watch_dfs", stock)
-    main_df['MACD1'] = macd[0]
-    main_df['MACD2'] = macd[1]
-    main_df['MACD3'] = macd[2]
-
-    main_df['KST'] = KST_Osc("watch_dfs", stock)
-
-    main_df['Mass Index'] = MI("watch_dfs", stock)
-
-    main_df['Trix'] = Trix("watch_dfs", stock)
-
-    vi = VI("watch_dfs", stock)
-    main_df['+VM'] = vi[0]
-    main_df['-VM'] = vi[1]
-
-    main_df['MFI'] = MFI("watch_dfs", stock)
-
-    main_df['RSI'] = RSI("watch_dfs", stock)
-
-    main_df['TSI'] = TSI("watch_dfs", stock)
-
-    main_df['Acc Dist Index'] = AccDistIndex("watch_dfs", stock)
-
-    voli = VolI("watch_dfs", stock)
-    main_df['+VI'] = voli[0]
-    main_df['-VI'] = voli[1]
-
-    main_df['OBV'] = OBV("watch_dfs", stock)
-
-    main_df['VPT'] = VPT("watch_dfs", stock)
-
-    main_df['ATR'] = ATR("watch_dfs", stock)
-
-    main_df['KC'] = KC("watch_dfs", stock)
-
-    main_df['Std Dev'] = Std_Dev("watch_dfs", stock)
-
-    main_df['McClellan'] = McClellan_Osc("watch_dfs", stock)
-
-
-    main_df.to_csv('Calculations/{}.csv'.format(stock))
-'''
-
-'''
-#Get Daily OHLC Data for stocks being watched
-for stock in stocks:
-    print(stock)
-    daily_ohlc(stock)
-
-        date = dt.datetime.now()
-        date = date.strftime('%Y-%m-%d')
-
-        start = dt.datetime(2010, 1, 1)
-        end = dt.datetime.now()
-
-        df = web.DataReader(stock, 'yahoo', start, end)
-        df = df.tail(1)
-        high = df['High']
-        low = df['Low']
-        open = df['Open']
-        close = df['Close']
-        volume = df['Volume']
-        adj_close = df['Adj Close']
-        high = str(high.values).replace("[", "").replace("]", "")
-        low = str(low.values).replace("[", "").replace("]", "")
-        open = str(open.values).replace("[", "").replace("]", "")
-        close = str(close.values).replace("[", "").replace("]", "")
-        volume = str(volume.values).replace("[", "").replace("]", "")
-        adj_close = str(adj_close.values).replace("[", "").replace("]", "")
-
-        adx_list = ADX(folder, stock)
-        adx = adx_list[0]
-        pos_DI = adx_list[1]
-        neg_DI = adx_list[2]
-
-        comm = Comm_CI(folder, stock)
-        cci = comm[0]
-        typical_price = comm[1]
-
-        dpo = DPO(folder, stock)
-        dpo = dpo[0]
-
-        kst = KST_Osc(folder, stock)
-        kst = kst[2]
-
-        macd = MACD(folder, stock)
-        macd1 = macd[0]
-        macd2 = macd[1]
-        macd3 = macd[2]
-
-        mi = MI(folder, stock)
-        mi = mi[0]
-
-        trix = Trix(folder, stock)
-        trix = trix[0]
-
-        vi = VI(folder, stock)
-        VMup = vi[0]
-        VMdown = vi[1]
-
-        mfi = MFI(folder, stock)
-
-        rsi = RSI(folder, stock)
-
-        tsi = TSI(folder, stock)
-        tsi = tsi[0]
-
-        adi = AccDistIndex(folder, stock)
-        adi = adi[0]
-
-        voli = VolI(folder, stock)
-        pos_VI = voli[0]
-        neg_VI = voli[1]
-
-        obv = OBV(folder, stock)
-        obv = obv[0]
-
-        vpt = VPT(folder, stock)
-        vpt = vpt[0]
-
-        atr = ATR(folder, stock)
-        atr = atr[0]
-
-        kc = KC(folder, stock)
-
-        sd = Std_Dev(folder, stock)
-
-        mcclellan = McClellan_Osc(folder, stock)
-
-        main_df = pd.DataFrame({
-            "Date": [date],
-            "High": [high],
-            "Low": [low],
-            "Open": [open],
-            "Close": [close],
-            "Volume": [volume],
-            "Adj Close": [adj_close],
-            "ADX": [adx],
-            "+DI": [pos_DI],
-            "-DI": [neg_DI],
-            "Comm CI": [cci],
-            "Typical Price": [typical_price],
-            "DPO": [dpo],
-            "MACD1": [macd1],
-            "MACD2": [macd2],
-            "MACD3": [macd3],
-            "KST": [kst],
-            "Mass Index": [mi],
-            "Trix": [trix],
-            "+VM": [VMup],
-            "-VM": [VMdown],
-            "MFI": [mfi],
-            "RSI": [rsi],
-            "TSI": [tsi],
-            "Acc Dist Index": [adi],
-            "+VI": [pos_VI],
-            "-VI": [neg_VI],
-            "OBV": [obv],
-            "VPT": [vpt],
-            "ATR": [atr],
-            "KC": [kc],
-            "Std Dev": [sd],
-            "McClellan": [mcclellan]
-        })
-
-        main_df.to_csv('Calculations/{}.csv'.format(stock), mode='a', header=False)
-'''
-
